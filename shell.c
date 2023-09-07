@@ -157,10 +157,6 @@ int main()
             {
                 runLoop = false;
             }
-            else
-            {
-                
-            }
 
             // Free the token vector
             for (int i = 0; i < token_count; i++)
