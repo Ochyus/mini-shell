@@ -121,7 +121,7 @@ int main()
     {
         char cwd[1024];
         getcwd(cwd, sizeof(cwd));
-        printf("%s Mini-Shell> ", cwd);
+        printf("%s Mini-shell> ", cwd);
         fflush(stdout);
         if (fgets(input, sizeof(input), stdin) == NULL)
         {
@@ -192,6 +192,6 @@ int main()
         }
     }
 
-    printf("Exiting mini-shell.\n");
+    printf("Exiting Mini-shell.\n");
     return 0;
 }
