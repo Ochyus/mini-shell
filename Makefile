@@ -1,7 +1,7 @@
 default: clean build
 
-clean: mini-shell
-	rm mini-shell
+clean: shell
+	rm shell
 
-build: mini-shell.c
-	gcc mini-shell.c -o mini-shell
+build: shell.c
+	gcc shell.c -o shell
