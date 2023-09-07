@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <stdbool.h>
 
 // Function to tokenize a string
 void tokenize(char *input, int *token_count, char ***token_vector)
@@ -112,12 +113,13 @@ void executeHello(char **tokens, int token_count)
 
 int main()
 {
+    bool runLoop = true;
     char input[1024];
     int token_count;
     char **token_vector;
     int status;
 
-    while (1)
+    while (runLoop)
     {
         char cwd[1024];
         getcwd(cwd, sizeof(cwd));
@@ -153,34 +155,11 @@ int main()
             }
             else if (strcmp(token_vector[0], "exit") == 0)
             {
-                break;
+                runLoop = false;
             }
             else
             {
-                // Fork a new process
-                pid_t pid = fork();
-
-                if (pid == -1)
-                {
-                    perror("fork");
-                    exit(1);
-                }
-                else if (pid == 0)
-                {
-                    // This is the child process
-                    // Execute the specified program
-                    if (execvp(token_vector[0], token_vector) == -1)
-                    {
-                        perror("execvp");
-                        exit(1);
-                    }
-                }
-                else
-                {
-                    // This is the parent process
-                    // Wait for the child to terminate
-                    waitpid(pid, &status, 0);
-                }
+                
             }
 
             // Free the token vector
