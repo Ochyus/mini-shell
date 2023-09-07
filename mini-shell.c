@@ -151,6 +151,10 @@ int main()
             {
                 executeHello(token_vector, token_count);
             }
+            else if (strcmp(token_vector[0], "exit") == 0)
+            {
+                break;
+            }
             else
             {
                 // Fork a new process
