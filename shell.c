@@ -21,6 +21,8 @@ void tokenize(char *input, int *token_count, char ***token_vector)
     }
 
     *token_count = count;
+    tokens = (char **)realloc(tokens, (count+1) * sizeof(char *));
+    tokens[count]=NULL;
     *token_vector = tokens;
 }
 
